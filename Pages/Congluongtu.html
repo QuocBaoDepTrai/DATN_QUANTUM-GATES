@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>CỔNG LƯỢNG TỬ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-black text-white p-4 flex justify-between items-center">
+    <div class="text-xl font-bold">QUANTUM GATES</div>
+    <nav class="space-x-6 text-sm">
+      <a href="index.html" class="hover:underline">Trang chủ</a>
+      <a href="congluongtu.html" class="hover:underline font-bold">Cổng lượng tử</a>
+      <a href="TinTuc.html" class="hover:underline">Tin tức</a>
+      <a href="HoatDong.html" class="hover:underline">Hoạt động</a>
+      <a href="LienHe.html" class="hover:underline">Liên hệ</a>
+      <a href="HoiVien.html" class="hover:underline">Hội viên</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow section-intro">
+    <div class="intro-wrapper text-center">
+      <h1 class="main-title mb-6">Chọn cổng lượng tử</h1>
+
+      <label for="gateSelect" class="block text-base font-medium text-left mb-2">Danh sách:</label>
+      <select id="gateSelect" class="w-full p-3 border border-gray-300 rounded mb-6">
+        <option value="">-- Chọn cổng lượng tử --</option>
+        <option value="hadamard.html">Cổng Hadamard</option>
+        <option value="pauli-x.html">Cổng Pauli-X</option>
+        <option value="pauli-y.html">Cổng Pauli-Y</option>
+        <option value="pauli-z.html">Cổng Pauli-Z</option>
+        <option value="s.html">Cổng S</option>
+        <option value="t.html">Cổng T</option>
+        <option value="cnot.html">Cổng CNOT</option>
+      </select>
+
+      <button onclick="goToGate()" class="main-button w-full">🔁 Đến trang mô phỏng</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white p-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+    <div>
+      <h3 class="font-bold mb-2">VỀ CHÚNG TÔI</h3>
+      <p>Liên hệ: quantumgates@example.com</p>
+      <p>Chính sách</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">CỔNG LƯỢNG TỬ</h3>
+      <p>Hadamard</p>
+      <p>Pauli-X</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">TÀI NGUYÊN</h3>
+      <p>Tài liệu học</p>
+      <p>Biểu đồ trạng thái</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">LIÊN HỆ</h3>
+      <p>Trường Đại học Kỹ thuật - Cần Thơ</p>
+      <p>SĐT: 0385 316 325</p>
+    </div>
+  </footer>
+
+  <script>
+    function goToGate() {
+      const select = document.getElementById("gateSelect");
+      const value = select.value;
+      if (value) {
+        window.location.href = value;
+      } else {
+        alert("Vui lòng chọn một cổng lượng tử trước khi tiếp tục!");
+      }
+    }
+  </script>
+
+</body>
+</html>

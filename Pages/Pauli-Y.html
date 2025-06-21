@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cổng Pauli-Y</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body);"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="text-xl font-bold">QUANTUM GATES</div>
+    <nav class="space-x-6 text-sm">
+      <a href="index.html" class="hover:underline">Trang chủ</a>
+      <a href="Congluongtu.html" class="hover:underline">Cổng lượng tử</a>
+      <a href="HoatDong.html" class="hover:underline">Hoạt động</a>
+      <a href="TinTuc.html" class="hover:underline">Tin Tức</a>
+      <a href="LienHe.html" class="hover:underline">Liên hệ</a>
+      <a href="HoiVien.html" class="hover:underline">Hội viên</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main-container mt-6">
+    <div class="bg-white rounded-xl shadow-md p-6">
+
+      <h1 class="main-title text-2xl mb-4">🌀 Cổng Pauli-Y</h1>
+
+      <div class="math-box text-blue-800 mb-6">
+        $$ Y = \begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix} $$
+      </div>
+
+      <label for="inputState" class="form-label block mb-2 font-medium">Chọn trạng thái đầu vào:</label>
+      <select id="inputState" class="mb-6 p-2 border rounded">
+        <option value="0">|0⟩</option>
+        <option value="1">|1⟩</option>
+      </select>
+
+      <canvas id="stateChart" class="my-6 w-full h-64"></canvas>
+
+      <button onclick="simulatePauliY()" class="main-button">
+        Mô phỏng Pauli-Y
+      </button>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <h3>VỀ CHÚNG TÔI</h3>
+      <p>Liên hệ: quantumgates@example.com</p>
+      <p>Chính sách</p>
+    </div>
+    <div>
+      <h3>CỔNG LƯỢNG TỬ</h3>
+      <p>Hadamard</p>
+      <p>Pauli-X</p>
+      <p>Pauli-Y</p>
+    </div>
+    <div>
+      <h3>TÀI NGUYÊN</h3>
+      <p>Tài liệu học</p>
+      <p>Biểu đồ trạng thái</p>
+    </div>
+    <div>
+      <h3>LIÊN HỆ</h3>
+      <p>Trường Đại học Kỹ thuật - Cần Thơ</p>
+      <p>SĐT: 0385 316 325</p>
+    </div>
+  </footer>
+
+  <!-- Slide Layer kế thừa giao diện -->
+<div id="slideUpPage"
+     class="fixed bottom-[-100%] left-0 w-full h-full bg-white z-50 flex flex-col transition-all duration-700">
+
+  <!-- Header kế thừa -->
+  <header class="bg-black text-white p-4 flex justify-between items-center">
+    <div class="text-xl font-bold">QUANTUM GATES</div>
+    <nav class="space-x-6 text-sm">
+      <a href="index.html" class="hover:underline">Trang chủ</a>
+      <a href="Congluongtu.html" class="hover:underline">Cổng lượng tử</a>
+      <a href="HoatDong.html" class="hover:underline">Hoạt động</a>
+      <a href="TinTuc.html" class="hover:underline">Tin Tức</a>
+      <a href="LienHe.html" class="hover:underline">Liên hệ</a>
+      <a href="HoiVien.html" class="hover:underline">Hội viên</a>
+    </nav>
+  </header>
+
+  <!-- Nội dung chính trong slide -->
+  <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
+    <h2 class="text-3xl font-bold text-amber-600 mb-4">🚀 Quantum World Is Loading</h2>
+    <p class="text-gray-700">Trang mới đang được khởi tạo... Hãy cùng khám phá!</p>
+  </div>
+
+  <!-- Footer kế thừa -->
+  <footer class="bg-black text-white p-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+    <div>
+      <h3 class="font-bold mb-2">VỀ CHÚNG TÔI</h3>
+      <p>Liên hệ: quantumgates@example.com</p>
+      <p>Chính sách</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">CỔNG LƯỢNG TỬ</h3>
+      <p>Hadamard</p>
+      <p>Pauli-X</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">TÀI NGUYÊN</h3>
+      <p>Tài liệu học</p>
+      <p>Biểu đồ trạng thái</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">LIÊN HỆ</h3>
+      <p>Trường Đại học Kỹ thuật - Cần Thơ</p>
+      <p>SĐT: 0385 316 325</p>
+    </div>
+  </footer>
+
+</div>
+  <!-- Script chung -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
