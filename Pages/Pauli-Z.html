@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Cổng Pauli-X</title>
+  <title>Cổng Pauli-Z</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-<header>
+
+  <!-- Header -->
+  <header>
     <div class="text-xl font-bold">QUANTUM GATES</div>
     <nav class="space-x-6 text-sm">
       <a href="index.html" class="hover:underline">Trang chủ</a>
@@ -26,19 +28,35 @@
     </nav>
   </header>
 
+  <!-- Main -->
   <main class="mt-6 flex flex-col items-center">
-    <h1 class="text-4xl font-bold text-gray-900 text-center mb-2">⚡ CỔNG PAULI-X</h1>
-    <p class="text-center italic text-orange-600 text-lg mb-6">"Lật trạng thái qubit từ |0⟩ sang |1⟩ và ngược lại"</p>
+    <h1 class="text-4xl font-bold text-gray-900 text-center mb-2">🧲 CỔNG PAULI-Z</h1>
+    <p class="text-center italic text-purple-600 text-lg mb-6">"Đảo pha trạng thái lượng tử một cách tinh tế và đầy uy lực"</p>
 
     <div class="bg-white rounded-xl shadow-md p-6 w-full max-w-4xl">
       <div class="mb-6 text-gray-800 leading-relaxed text-justify">
         <p class="mb-4">
-          Cổng Pauli-X hoạt động tương tự như cổng NOT trong máy tính cổ điển. Nó đảo trạng thái của một qubit: từ |0⟩ sang |1⟩ và ngược lại. Đây là một trong những cổng lượng tử cơ bản và thường xuyên được sử dụng trong các mạch lượng tử.
+          Cổng Pauli-Z là một trong ba cổng Pauli cơ bản, có tác dụng đảo dấu (pha) của trạng thái \(|1\rangle\) trong khi giữ nguyên \(|0\rangle\). Điều này làm cho Pauli-Z trở thành một cổng đặc biệt trong việc điều khiển pha lượng tử – một yếu tố then chốt trong các thuật toán như Grover hay trong điều chỉnh qubit trong máy tính lượng tử.
+        </p>
+        <p>
+          Trong ma trận đại số, cổng Pauli-Z có dạng:
         </p>
       </div>
 
       <div class="math-box text-blue-800 text-center mb-6">
-        $$ X = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} $$
+        $$ Z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} $$
+      </div>
+
+      <div class="mb-6 text-black leading-relaxed">
+        <h2 class="text-lg font-bold text-black mb-2">Biến đổi cụ thể của cổng Pauli-Z</h2>
+        <ul class="list-disc ml-6">
+          <li class="mb-2">
+            <strong>Với trạng thái \(|0\rangle\):</strong> không thay đổi.
+          </li>
+          <li>
+            <strong>Với trạng thái \(|1\rangle\):</strong> trở thành \(-|1\rangle\), tức là đảo pha.
+          </li>
+        </ul>
       </div>
 
       <label for="inputState" class="block mb-2 font-bold">Chọn trạng thái đầu vào:</label>
@@ -47,23 +65,25 @@
         <option value="1">|1⟩</option>
       </select>
 
+      <!-- Biểu đồ biên độ |c| -->
       <div class="w-full max-w-md mx-auto my-6">
         <canvas id="stateChart" class="w-full h-64"></canvas>
       </div>
 
+      <!-- Biểu đồ complex -->
       <div class="w-full max-w-2xl mx-auto mt-8">
         <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Biểu đồ biên độ phức (Re/Im và |c|)</h3>
         <canvas id="complexChart" class="w-full h-64 bg-white rounded shadow"></canvas>
       </div>
 
-      <div class="flex justify-center">
-        <button onclick="simulatePauliX()" class="main-button">
-          Mô phỏng Pauli-X
-        </button>
+      <!-- Nút mô phỏng -->
+      <div class="flex justify-center mt-6">
+        <button onclick="simulatePauliZ()" class="main-button">Mô phỏng Pauli-Z</button>
       </div>
     </div>
   </main>
-  
+
+  <!-- Footer -->
   <footer>
     <div>
       <h3>VỀ CHÚNG TÔI</h3>
@@ -74,6 +94,7 @@
       <h3>CỔNG LƯỢNG TỬ</h3>
       <p>Hadamard</p>
       <p>Pauli-X</p>
+      <p>Pauli-Z</p>
     </div>
     <div>
       <h3>TÀI NGUYÊN</h3>
@@ -87,8 +108,8 @@
     </div>
   </footer>
 
-  <div id="slideUpPage"
-     class="fixed bottom-[-100%] left-0 w-full h-full bg-white z-50 flex flex-col transition-all duration-700">
+  <!-- Slide Layer kế thừa giao diện -->
+  <div id="slideUpPage" class="fixed bottom-[-100%] left-0 w-full h-full bg-white z-50 flex flex-col transition-all duration-700">
     <header class="bg-black text-white p-4 flex justify-between items-center">
       <div class="text-xl font-bold">QUANTUM GATES</div>
       <nav class="space-x-6 text-sm">
@@ -102,7 +123,7 @@
     </header>
     <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
       <h2 class="text-3xl font-bold text-amber-600 mb-4">🚀 Quantum World Is Loading</h2>
-      <p class="text-gray-700">Trang mới đang được khởi tạo... Hãy cùng khám phá! </p>
+      <p class="text-gray-700">Trang mới đang được khởi tạo... Hãy cùng khám phá!</p>
     </div>
     <footer class="bg-black text-white p-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
       <div>
@@ -114,6 +135,7 @@
         <h3 class="font-bold mb-2">CỔNG LƯỢNG TỬ</h3>
         <p>Hadamard</p>
         <p>Pauli-X</p>
+        <p>Pauli-Z</p>
       </div>
       <div>
         <h3 class="font-bold mb-2">TÀI NGUYÊN</h3>
@@ -127,7 +149,8 @@
       </div>
     </footer>
   </div>
+
+  <!-- Script gọi scroll và hiệu ứng -->
   <script src="../js/main.js"></script>
-  <script src="../js/pauli-x-sim.js"></script>
 </body>
-  </html>
+</html>
