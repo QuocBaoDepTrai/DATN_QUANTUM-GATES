@@ -22,26 +22,55 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow section-intro">
-    <div class="intro-wrapper text-center">
-      <h1 class="main-title mb-6">Chọn cổng lượng tử</h1>
+  <main class="flex-grow px-4 md:px-20 py-12">
+  <h1 class="text-3xl font-bold text-center text-black mb-10">CỔNG LƯỢNG TỬ</h1>
 
-      <label for="gateSelect" class="block text-base font-medium text-left mb-2">Danh sách:</label>
-      <select id="gateSelect" class="w-full p-3 border border-gray-300 rounded mb-6">
-        <option value="">-- Chọn cổng lượng tử --</option>
-        <option value="hadamard.html">Cổng Hadamard</option>
-        <option value="pauli-x.html">Cổng Pauli-X</option>
-        <option value="pauli-y.html">Cổng Pauli-Y</option>
-        <option value="pauli-z.html">Cổng Pauli-Z</option>
-        <option value="s.html">Cổng S</option>
-        <option value="t.html">Cổng T</option>
-        <option value="cnot.html">Cổng CNOT</option>
+  <!-- Danh mục chọn cổng -->
+  <div class="flex flex-wrap justify-center items-center gap-8 mb-10">
+    <!-- Mô tả cổng -->
+    <div class="flex flex-col">
+      <label for="moTa" class="font-medium mb-1">Mô tả cổng:</label>
+      <select id="moTa" class="p-3 w-56 border border-gray-300 rounded shadow">
+        <option>-- Chọn cổng lượng tử --</option>
+        <option>Cổng Hadamard</option>
+        <option>Cổng Pauli-X</option>
+        <option>Cổng Pauli-Y</option>
+        <option>Cổng Pauli-Z</option>
+        <option>Cổng S</option>
+        <option>Cổng T</option>
+        <option>Cổng CNOT</option>
       </select>
-
-      <button onclick="goToGate()" class="main-button w-full">🔁 Đến trang mô phỏng</button>
     </div>
-  </main>
+
+    <!-- Tác động cổng -->
+    <div class="flex flex-col">
+      <label for="tacDong" class="font-medium mb-1">Tác động cổng:</label>
+      <select id="tacDong" class="p-3 w-56 border border-gray-300 rounded shadow">
+        <option>-- Chọn số lượng qubit --</option>
+        <option>Đơn qubit</option>
+        <option>Đa qubit</option>
+      </select>
+    </div>
+
+    <!-- Chuỗi cổng -->
+    <div class="flex flex-col">
+      <label for="chuoi" class="font-medium mb-1">Chuỗi cổng:</label>
+      <select id="chuoi" class="p-3 w-56 border border-gray-300 rounded shadow">
+        <option>-- Chọn số lượng qubit --</option>
+        <option>Đơn qubit</option>
+        <option>Đa qubit</option>
+      </select>
+    </div>
+  </div>
+  
+    <!-- Nút xác nhận -->
+  <div class="flex justify-center">
+    <button onclick="xacNhan()" class="px-6 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition">
+      Xác nhận
+    </button>
+  </div>
+</main>
+
 
   <!-- Footer -->
   <footer class="bg-black text-white p-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -67,17 +96,70 @@
     </div>
   </footer>
 
+   <!-- Điều hướng -->
   <script>
-    function goToGate() {
-      const select = document.getElementById("gateSelect");
-      const value = select.value;
-      if (value) {
-        window.location.href = value;
-      } else {
-        alert("Vui lòng chọn một cổng lượng tử trước khi tiếp tục!");
-      }
+  // Bản đồ ánh xạ từ tên cổng → file HTML tương ứng
+  const gateMap = {
+    "Cổng Hadamard": "hadamard.html",
+    "Cổng Pauli-X": "pauli-x.html",
+    "Cổng Pauli-Y": "pauli-y.html",
+    "Cổng Pauli-Z": "pauli-z.html",
+    "Cổng S": "s.html",
+    "Cổng T": "t.html",
+    "Cổng CNOT": "cnot.html"
+  };
+
+  // Khi trang tải xong, gán sự kiện cho 3 dropdown
+  window.onload = function () {
+    const selects = ["moTa", "tacDong", "chuoi"];
+
+    // Gán sự kiện change cho mỗi select để khóa 2 ô còn lại
+    selects.forEach(id => {
+      document.getElementById(id).addEventListener("change", () => {
+        selects.forEach(otherId => {
+          if (otherId !== id) {
+            document.getElementById(otherId).disabled = true;
+          }
+        });
+      });
+    });
+  };
+
+  // Hàm xử lý điều hướng khi ấn nút "Xác nhận"
+  function xacNhan() {
+    const moTa = document.getElementById("moTa")?.value?.trim();
+    const tacDong = document.getElementById("tacDong")?.value?.trim();
+    const chuoi = document.getElementById("chuoi")?.value?.trim();
+
+    // Nếu đã chọn cổng cụ thể trong phần "Mô tả"
+    if (moTa && gateMap[moTa]) {
+      window.location.href = gateMap[moTa];
+      return;
     }
-  </script>
+
+    // Nếu chọn tác động qubit
+    if (tacDong === "Đơn qubit") {
+      window.location.href = "TacdongQubitDon.html";
+      return;
+    } else if (tacDong === "Đa qubit") {
+      window.location.href = "TacdongQubitDa.html";
+      return;
+    }
+
+    // Nếu chọn chuỗi cổng
+    if (chuoi === "Đơn qubit") {
+      window.location.href = "ChuoiQubitDon.html";
+      return;
+    } else if (chuoi === "Đa qubit") {
+      window.location.href = "ChuoiQubitDa.html";
+      return;
+    }
+
+    // Nếu chưa chọn gì cả
+    alert("Vui lòng chọn danh mục phù hợp để chuyển trang.");
+  }
+</script>
+  <script src="js/Main.js"></script>
 
 </body>
 </html>
