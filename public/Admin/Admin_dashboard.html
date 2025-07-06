@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản trị Admin - Quantum Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .dropdown-menu { display: none; }
+    .dropdown-menu.show { display: block; }
+  </style>
+</head>
+<body class="flex h-screen bg-gray-100">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white flex flex-col p-4 space-y-4">
+    <h2 class="text-2xl font-bold mb-4">🔧 Admin Panel</h2>
+
+    <!-- Tin tức dropdown -->
+    <div>
+      <button onclick="toggleDropdown('newsDropdown')" class="w-full text-left hover:bg-gray-700 px-3 py-2 rounded">
+        📰 Tin tức ▾
+      </button>
+      <div id="newsDropdown" class="dropdown-menu pl-4 space-y-1">
+        <a href="Admin_news.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">➕ Thêm</a>
+        <a href="Admin_news_edit.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">✏️ Chỉnh sửa</a>
+        <a href="Admin_news_list.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">📃 Danh sách</a>
+      </div>
+    </div>
+
+    <!-- Hoạt động dropdown -->
+    <div>
+      <button onclick="toggleDropdown('eventsDropdown')" class="w-full text-left hover:bg-gray-700 px-3 py-2 rounded">
+        📅 Hoạt động ▾
+      </button>
+      <div id="eventsDropdown" class="dropdown-menu pl-4 space-y-1">
+        <a href="Admin_events.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">➕ Thêm</a>
+        <a href="Admin_events_edit.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">✏️ Chỉnh sửa</a>
+        <a href="Admin_events_list.html" target="contentFrame" class="block hover:bg-gray-700 px-3 py-1 rounded">📃 Danh sách</a>
+      </div>
+    </div>
+
+    <!-- Các mục khác -->
+    <a href="Admin_members.html" target="contentFrame" class="hover:bg-gray-700 px-3 py-2 rounded">👥 Hội viên</a>
+    <a href="Admin_history.html" target="contentFrame" class="hover:bg-gray-700 px-3 py-2 rounded">📊 Lịch sử mô phỏng</a>
+    <a href="login.html" class="hover:bg-red-600 px-3 py-2 rounded bg-red-500">🔒 Đăng xuất</a>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-4 overflow-hidden">
+    <iframe name="contentFrame" src="Admin_events.html" class="w-full h-full border rounded"></iframe>
+  </main>
+
+  <!-- JS cho dropdown -->
+  <script>
+    function toggleDropdown(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
