@@ -1,0 +1,31 @@
+/* Đặt các kiểu dáng tùy chỉnh cho trang web */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#news-list {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+select {
+  border-color: #cbd5e0;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+select:focus {
+  outline-color: #4f46e5;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách Bài viết</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../adminCSS/list_news.css">
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts.js" defer></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+  <h2 class="text-2xl font-bold mb-4">📑 Danh sách Bài viết</h2>
+
+  <!-- Lọc và Sắp xếp -->
+  <div class="mb-6 flex gap-6">
+    <!-- Phân loại bài viết -->
+    <select id="category-filter" class="px-4 py-2 border rounded w-1/4">
+      <option value="">Tất cả phân loại</option>
+      <option value="tin-tuc">Tin tức</option>
+      <option value="hoat-dong">Hoạt động</option>
+      <option value="su-kien">Sự kiện</option>
+    </select>
+
+    <!-- Sắp xếp bài viết -->
+    <select id="sort-order" class="px-4 py-2 border rounded w-1/4">
+      <option value="newest">Mới nhất</option>
+      <option value="oldest">Cũ nhất</option>
+    </select>
+  </div>
+
+  <!-- Danh sách bài viết -->
+  <div id="news-list" class="space-y-4">
+    <!-- Các bài viết sẽ được thêm vào đây -->
+  </div>
+ <script src="../adminJS/list_news.js"></script>
+</body>
+</html>

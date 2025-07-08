@@ -1,0 +1,19 @@
+#preview-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem auto;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
